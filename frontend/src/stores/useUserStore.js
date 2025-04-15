@@ -78,34 +78,34 @@ export const useUserStore = create((set, get) => ({
 
 
 // Axios interceptor for token refresh
-
 let refreshPromise = null;
+
 axios.interceptors.response.use(
 	(response) => response,
 	async (error) => {
 		const originalRequest = error.config;
-		if(error.response?.status === 401 && !originalRequest._retry){
+		if (error.response?.status === 401 && !originalRequest._retry) {
 			originalRequest._retry = true;
+
 			try {
 				// If a refresh is already in progress, wait for it to complete
-				if(refreshPromise) {
+				if (refreshPromise) {
 					await refreshPromise;
-					return axios(originalRequest)
+					return axios(originalRequest);
 				}
 
-				// start a new refresh process
+				// Start a new refresh process
 				refreshPromise = useUserStore.getState().refreshToken();
 				await refreshPromise;
 				refreshPromise = null;
 
 				return axios(originalRequest);
 			} catch (refreshError) {
-				// if refresh fails, redirect to login or handle as needed
+				// If refresh fails, redirect to login or handle as needed
 				useUserStore.getState().logout();
-				return Promise.reject(refreshError)
+				return Promise.reject(refreshError);
 			}
 		}
-		return Promise.reject(error)
+		return Promise.reject(error);
 	}
-
-)
+);

@@ -27,7 +27,11 @@ export const addToCart = async (req, res) => {
         const product = await Product.findById(productId);
         if (!product) return res.status(404).json({ message: "Product not found" });
 
-        const existingItem = user.cartItems.find((item) => item?.id === productId);
+        // Use .toString() to avoid ObjectId vs string mismatch
+        const existingItem = user.cartItems.find(
+            (item) => item.id.toString() === productId.toString()
+        );
+
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
@@ -41,6 +45,7 @@ export const addToCart = async (req, res) => {
         res.status(500).json({ message: "Server error", error: error.message });
     }
 };
+
 
 
 export const removeAllFromCart = async (req, res) => {

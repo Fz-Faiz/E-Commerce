@@ -19,24 +19,29 @@ export const getCartProducts = async (req, res) => {
 };
 
 export const addToCart = async (req, res) => {
-	try {
-		const { productId } = req.body;
-		const user = req.user;
+    try {
+        const { productId } = req.body;
+        const user = req.user;
+        if (!user) return res.status(401).json({ message: "User not authenticated" });
 
-		const existingItem = user.cartItems.find((item) => item.id === productId);
-		if (existingItem) {
-			existingItem.quantity += 1;
-		} else {
-			user.cartItems.push(productId);
-		}
+        const product = await Product.findById(productId);
+        if (!product) return res.status(404).json({ message: "Product not found" });
 
-		await user.save();
-		res.json(user.cartItems);
-	} catch (error) {
-		console.log("Error in addToCart controller", error.message);
-		res.status(500).json({ message: "Server error", error: error.message });
-	}
+        const existingItem = user.cartItems.find((item) => item?.id === productId);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            user.cartItems.push({ id: productId, quantity: 1 });
+        }
+
+        await user.save();
+        res.json(user.cartItems);
+    } catch (error) {
+        console.log("Error in addToCart controller", error.message);
+        res.status(500).json({ message: "Server error", error: error.message });
+    }
 };
+
 
 export const removeAllFromCart = async (req, res) => {
     try {

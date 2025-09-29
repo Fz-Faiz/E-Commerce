@@ -23,9 +23,18 @@ A full-stack **MERN e-commerce application** with authentication, cart managemen
 - Advanced search & filtering  
 
 ## 🔗 Project Link  
-👉 [View Project on GitHub](https://github.com/your-username/your-repo-name)  
+👉 [Live Project](https://e-commerce-mwo0.onrender.com)  
 
 ## 📷 Screenshots  
+
+### 🏠 Homepage  
 ![Home Page](docs/images/home.png)  
+
+### 🛒 Cart Page  
 ![Cart Page](docs/images/cart.png)  
+
+### 💳 Checkout Page  
 ![Checkout Page](docs/images/checkout.png)  
+
+### 🔐 Login Page  
+![Login Page](docs/images/login.png)  

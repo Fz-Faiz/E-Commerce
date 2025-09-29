@@ -28,13 +28,13 @@ A full-stack **MERN e-commerce application** with authentication, cart managemen
 ## 📷 Screenshots  
 
 ### 🏠 Homepage  
-![Home Page](docs/images/home.png)  
+![Home Page](https://github.com/Fz-Faiz/E-Commerce/blob/main/screen%202%20home.png)  
 
 ### 🛒 Cart Page  
 ![Cart Page](https://github.com/Fz-Faiz/E-Commerce/blob/main/cart%201%20home.png)  
 
 ### 💳 Checkout Page  
-![Checkout Page](docs/images/checkout.png)  
+![Checkout Page](https://github.com/Fz-Faiz/E-Commerce/blob/main/stripe%201%20.png)  
 
 ### 🔐 Login Page  
-![Login Page](docs/images/login.png)  
+![Login Page](https://github.com/Fz-Faiz/E-Commerce/blob/main/screen%201%20login.png)  

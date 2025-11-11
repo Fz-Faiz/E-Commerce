@@ -15,6 +15,8 @@ const SignUpPage = () => {
 
   const { signup, loading } = useUserStore();
 
+  
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
